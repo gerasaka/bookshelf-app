@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/style.css" />
     <title>Bookshelf App</title>
   </head>
   <body>
     <header><h1>Bookshelf App</h1></header>
     <main>
       <div>
-        <form action="">
+        <form action="" class="container">
           <h2>Add book to bookshelf</h2>
           <label for="">Title</label>
           <input type="text" />
@@ -32,21 +33,35 @@
 
           <label for="">Add to bookmark</label>
           <input type="checkbox" name="" id="" />
+
+          <button type="submit">Add book</button>
         </form>
         <div class="search-bar">
           <input type="search" name="" id="" />
-          <button></button>
+          <button>search</button>
         </div>
       </div>
-      <div>
-        <article class="bookmark">
+      <div class="book-list">
+        <article class="bookmark container">
           <h2>Bookmark</h2>
+          <div class="card">
+            <h3>Book Title</h3>
+            <p>Author Name</p>
+          </div>
         </article>
-        <article class="reading-list">
+        <article class="reading-list container">
           <h2>Reading List</h2>
+          <div class="card">
+            <h3>Book Title</h3>
+            <p>Author Name</p>
+          </div>
         </article>
-        <article class="finished-books">
+        <article class="finished-books container">
           <h2>Finished Books</h2>
+          <div class="card">
+            <h3>Book Title</h3>
+            <p>Author Name</p>
+          </div>
         </article>
       </div>
     </main>

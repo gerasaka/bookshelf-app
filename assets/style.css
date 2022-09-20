@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+html {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: bisque;
+}
+
+body {
+  padding: 1em;
+  background-color: #fce76c;
+}
+
+main,
+.book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+label {
+  display: block;
+}
+
+form input,
+textarea {
+  width: 100%;
+  border-radius: 1em;
+  margin-bottom: 0.5em;
+}
+
+input {
+  box-sizing: border-box;
+  padding: 0.4em;
+}
+
+.container {
+  background-color: #fcfcfc;
+  padding: 0.5em;
+}
+
+.card {
+  background-color: #fce76c;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}

@@ -20,7 +20,6 @@ header {
   color: #fcfcfc;
 }
 
-main,
 .book-list {
   display: flex;
   flex-direction: column;
@@ -53,7 +52,7 @@ textarea {
 input,
 textarea {
   box-sizing: border-box;
-  padding: 0.4em 1em;
+  padding: 0.5em 1em;
   border-radius: 1em;
   margin-bottom: 0.4em;
   background-color: #464a62;
@@ -65,7 +64,7 @@ textarea {
 }
 
 .btn {
-  padding: 0.7em;
+  padding: 0.5em 1.7em;
   background-color: #ff8f5c;
   border-radius: 1.5em;
   font-weight: 700;
@@ -74,6 +73,11 @@ textarea {
 .submit {
   margin-top: 2.2em;
   width: 100%;
+}
+
+.search-bar {
+  margin: 2em auto 0.5em;
+  text-align: right;
 }
 
 .card {

@@ -11,9 +11,14 @@
     <header><h1>Bookshelf App</h1></header>
     <main>
       <div>
+        <button id="open-modal" class="modal-btn btn">
+          Add book to bookshelf
+        </button>
         <section id="form-wrapper">
           <form action="" class="container">
             <h2>Add book to bookshelf</h2>
+            <button id="close-modal" class="btn-icon">C</button>
+
             <label for="title">Title</label>
             <input type="text" name="title" id="title" />
 
@@ -28,7 +33,7 @@
               name="description"
               id="description"
               cols="30"
-              rows="5"
+              rows="3"
             ></textarea>
             <div>
               <input type="checkbox" name="" id="" class="checkbox" />
@@ -41,7 +46,6 @@
             <button type="submit" class="submit-btn btn">Add book</button>
           </form>
         </section>
-        <button id="modal-btn" class="btn">open modal</button>
         <div class="search-bar">
           <input type="search" name="search-field" id="search-field" />
           <button class="btn">search</button>

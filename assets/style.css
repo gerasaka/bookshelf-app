@@ -7,40 +7,73 @@
 html {
   max-width: 400px;
   margin: 0 auto;
-  background-color: bisque;
+  background-color: #623aa2;
 }
 
 body {
-  padding: 1em;
-  background-color: #fce76c;
+  font-size: 14px;
+  padding: 1em 1.2em;
+  background-color: #161a34;
+}
+
+header {
+  color: #fcfcfc;
 }
 
 main,
 .book-list {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 1.5em;
 }
 
-label {
-  display: block;
+header {
+  margin-bottom: 1.3em;
+}
+
+.container {
+  background-color: #fcfcfc;
+  padding: 0.8em 1em;
+}
+
+h2 {
+  margin-bottom: 1em;
+  color: #623aa2;
+}
+
+form {
+  border-radius: 1em;
 }
 
 form input,
 textarea {
   width: 100%;
-  border-radius: 1em;
-  margin-bottom: 0.5em;
 }
 
-input {
+input,
+textarea {
   box-sizing: border-box;
-  padding: 0.4em;
+  padding: 0.4em 1em;
+  border-radius: 1em;
+  margin-bottom: 0.4em;
+  background-color: #464a62;
+  color: #fcfcfc;
 }
 
-.container {
-  background-color: #fcfcfc;
-  padding: 0.5em;
+.checkbox {
+  width: fit-content;
+}
+
+.btn {
+  padding: 0.7em;
+  background-color: #ff8f5c;
+  border-radius: 1.5em;
+  font-weight: 700;
+}
+
+.submit {
+  margin-top: 2.2em;
+  width: 100%;
 }
 
 .card {

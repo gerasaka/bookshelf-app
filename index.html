@@ -11,37 +11,40 @@
     <header><h1>Bookshelf App</h1></header>
     <main>
       <div>
-        <form action="" class="container">
-          <h2>Add book to bookshelf</h2>
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" />
+        <section id="form-wrapper">
+          <form action="" class="container">
+            <h2>Add book to bookshelf</h2>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" />
 
-          <label for="author">Author</label>
-          <input type="text" name="author" id="author" />
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" />
 
-          <label for="year">Published Year</label>
-          <input type="text" name="year" id="year" />
+            <label for="year">Published Year</label>
+            <input type="text" name="year" id="year" />
 
-          <label for="description">Description</label>
-          <textarea
-            name="description"
-            id="description"
-            cols="30"
-            rows="5"
-          ></textarea>
-          <div>
-            <input type="checkbox" name="" id="" class="checkbox" />
-            <label for="">Mark as done</label>
-          </div>
-          <div>
-            <input type="checkbox" name="" id="" class="checkbox" />
-            <label for="">Add to bookmark</label>
-          </div>
-          <button type="submit" class="submit btn">Add book</button>
-        </form>
+            <label for="description">Description</label>
+            <textarea
+              name="description"
+              id="description"
+              cols="30"
+              rows="5"
+            ></textarea>
+            <div>
+              <input type="checkbox" name="" id="" class="checkbox" />
+              <label for="">Mark as done</label>
+            </div>
+            <div>
+              <input type="checkbox" name="" id="" class="checkbox" />
+              <label for="">Add to bookmark</label>
+            </div>
+            <button type="submit" class="submit-btn btn">Add book</button>
+          </form>
+        </section>
+        <button id="modal-btn" class="btn">open modal</button>
         <div class="search-bar">
           <input type="search" name="search-field" id="search-field" />
-          <button class="search btn">search</button>
+          <button class="btn">search</button>
         </div>
       </div>
       <div class="book-list">
@@ -89,5 +92,6 @@
         </section>
       </div>
     </main>
+    <script src="assets/index.js"></script>
   </body>
 </html>

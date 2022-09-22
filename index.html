@@ -15,7 +15,7 @@
           Add book to bookshelf
         </button>
         <section id="form-wrapper">
-          <form action="" class="container">
+          <form action="" id="add-book" class="container">
             <h2>Add book to bookshelf</h2>
             <button id="close-modal" class="btn-icon">C</button>
 
@@ -36,11 +36,21 @@
               rows="3"
             ></textarea>
             <div>
-              <input type="checkbox" name="" id="" class="checkbox" />
+              <input
+                type="checkbox"
+                name="finish"
+                id="finish"
+                class="checkbox"
+              />
               <label for="">Mark as done</label>
             </div>
             <div>
-              <input type="checkbox" name="" id="" class="checkbox" />
+              <input
+                type="checkbox"
+                name="bookmark"
+                id="bookmark"
+                class="checkbox"
+              />
               <label for="">Add to bookmark</label>
             </div>
             <button type="submit" class="submit-btn btn">Add book</button>

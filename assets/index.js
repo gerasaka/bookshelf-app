@@ -26,14 +26,15 @@ addBookForm.addEventListener('submit', e => {
   const isComplete = document.getElementById('finish').checked;
   const addToBookmark = document.getElementById('bookmark').checked;
 
+  // TODO: refactor reset form
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
   document.getElementById('year').value = '';
   document.getElementById('description').value = '';
-  document.getElementById('finish').checked = '';
-  document.getElementById('bookmark').checked = '';
+  document.getElementById('finish').checked = false;
+  document.getElementById('bookmark').checked = false;
 
-  const newBook = generateBook(
+  const newBook = composeBook(
     title,
     author,
     year,
@@ -46,9 +47,12 @@ addBookForm.addEventListener('submit', e => {
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(bookshelf));
   alert('Book added');
+  document
+    .getElementsByClassName('bookmark-list')[0]
+    .append(createBookCard(newBook));
 });
 
-function generateBook(
+function composeBook(
   title,
   author,
   year,
@@ -66,3 +70,50 @@ function generateBook(
     addToBookmark,
   };
 }
+
+// TODO: show books to booklist
+function showBookList() {
+  const bookmarkList = document.getElementsByClassName('bookmark-list')[0];
+  const readingList = document.getElementsByClassName('reading-list')[0];
+  const finishedBooks = document.getElementsByClassName('finished-books')[0];
+}
+
+function createBookCard(book) {
+  const bookTitle = document.createElement('h3');
+  const bookAuthor = document.createElement('p');
+  bookTitle.append(book.title);
+  bookAuthor.append(book.author);
+
+  const bookInfo = document.createElement('div');
+  bookInfo.append(bookTitle, bookAuthor);
+
+  const bookmarkButton = document.createElement('button');
+  const finishedButton = document.createElement('button');
+  const deleteButton = document.createElement('button');
+
+  bookmarkButton.append('B');
+  finishedButton.append('F');
+  deleteButton.append('D');
+
+  bookmarkButton.classList.add('btn-icon');
+  finishedButton.classList.add('btn-icon');
+  deleteButton.classList.add('btn-icon');
+
+  const btnGroup = document.createElement('div');
+  btnGroup.classList.add('btn-group');
+
+  btnGroup.append(bookmarkButton, finishedButton, deleteButton);
+
+  const card = document.createElement('div');
+  card.classList.add('card');
+  card.append(bookInfo, btnGroup);
+
+  return card;
+}
+
+// TODO: update booklist
+// TODO: delete book
+// TODO: edit book
+// TODO: move book
+
+// TODO: refactor function

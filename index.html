@@ -10,10 +10,12 @@
   <body>
     <header><h1>Bookshelf App</h1></header>
     <main>
+      <!-- top section -->
       <div>
         <button id="open-modal" class="modal-btn btn">
           Add book to bookshelf
         </button>
+
         <section id="form-wrapper">
           <form action="" id="add-book" class="container">
             <h2>Add book to bookshelf</h2>
@@ -35,6 +37,7 @@
               cols="30"
               rows="3"
             ></textarea>
+
             <div>
               <input
                 type="checkbox"
@@ -44,6 +47,7 @@
               />
               <label for="finish">Mark as done</label>
             </div>
+
             <div>
               <input
                 type="checkbox"
@@ -53,39 +57,34 @@
               />
               <label for="bookmark">Add to bookmark</label>
             </div>
+
             <button type="submit" class="submit-btn btn">Add book</button>
           </form>
         </section>
+
         <div class="search-bar">
           <input type="search" name="search-field" id="search-field" />
           <button class="btn">search</button>
         </div>
       </div>
+      <!-- top section -->
+
+      <!-- bottom section -->
       <div class="book-list">
         <section class="container">
           <h2>Bookmark</h2>
-          <div class="bookmark-list"></div>
-          <!-- <div class="card">
-            <div>
-              <h3>Book Title</h3>
-              <p>Author Name</p>
-            </div>
-            <div class="btn-group">
-              <button class="btn-icon">B</button>
-              <button class="btn-icon">F</button>
-              <button class="btn-icon">D</button>
-            </div> -->
-          </div>
+          <div id="bookmark-list" class="list-container"></div>
         </section>
         <section class="container">
           <h2>Reading List</h2>
-          <div class="reading-list"></div>
+          <div id="reading-list" class="list-container"></div>
         </section>
         <section class="container">
           <h2>Finished Books</h2>
-          <div class="finished-books"></div>
+          <div id="finished-books" class="list-container"></div>
         </section>
       </div>
+      <!-- bottom section -->
     </main>
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/view.js"></script>

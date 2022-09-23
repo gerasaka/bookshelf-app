@@ -14,7 +14,7 @@ function renderBookList(book) {
   const card = createCard(book);
 
   if (book.addToBookmark) bookmarkList.append(card);
-  if (book.isComplete) finishedbooks.append('card');
+  if (book.isComplete) finishedbooks.append(card);
   else readingList.append(card);
 }
 
@@ -58,4 +58,12 @@ function createButtons(book) {
   deleteBtn.append('D');
 
   return { bookmarkBtn, finishBtn, deleteBtn };
+}
+
+function updateBookList(book) {
+  const card = createCard(book);
+
+  if (book.addToBookmark) bookmarkList.append(card);
+  if (book.isComplete) finishedbooks.append(card);
+  else readingList.append(card);
 }

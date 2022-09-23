@@ -1,3 +1,7 @@
+const bookmarkList = document.getElementsByClassName('bookmark-list')[0];
+const readingList = document.getElementsByClassName('reading-list')[0];
+const finishedbooks = document.getElementsByClassName('finished-books')[0];
+
 function loadData() {
   getBooks();
 
@@ -7,15 +11,12 @@ function loadData() {
 }
 
 function renderBookList(book) {
-  const bookmarkList = document.getElementsByClassName('bookmark-list')[0];
-  const readingList = document.getElementsByClassName('reading-list')[0];
-  const finishedbooks = document.getElementsByClassName('finished-books')[0];
-
   const card = createCard(book);
 
-  if (book.addToBookmark) bookmarkList.append(card);
   if (book.isComplete) finishedbooks.append(card);
   else readingList.append(card);
+
+  if (book.addToBookmark) bookmarkList.append(card.cloneNode(true));
 }
 
 function createCard(book) {
@@ -63,7 +64,8 @@ function createButtons(book) {
 function updateBookList(book) {
   const card = createCard(book);
 
-  if (book.addToBookmark) bookmarkList.append(card);
   if (book.isComplete) finishedbooks.append(card);
   else readingList.append(card);
+
+  if (book.addToBookmark) bookmarkList.append(card.cloneNode(true));
 }

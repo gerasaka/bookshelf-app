@@ -3,8 +3,22 @@ const STORAGE_KEY = 'bookshelf';
 let bookshelf = [];
 
 function getBooks() {
-  const dataFromStorage = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  bookshelf = dataFromStorage ?? [];
+  try {
+    if (typeof Storage !== 'undefined') {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(bookshelf));
+      } else {
+        const dataFromStorage = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        bookshelf = dataFromStorage;
+      }
+    } else alert("Your browser doesn't support Web Storage");
+  } catch (e) {
+    if (e.name == 'NS_ERROR_FILE_CORRUPTED') {
+      alert(
+        'Sorry, it looks like your browser storage has been corrupted. Please clear your storage by deleting your browser Cookies. This will remove the corrupted browser storage across all sites.'
+      );
+    }
+  }
 }
 
 function saveBook(e) {

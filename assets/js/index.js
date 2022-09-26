@@ -14,5 +14,7 @@ closeModal.addEventListener('click', () => {
 });
 
 const addBookForm = document.getElementById('add-book');
+const searchButton = document.getElementById('search');
 
 addBookForm.addEventListener('submit', e => saveBook(e));
+searchButton.addEventListener('click', e => searchBook(e));

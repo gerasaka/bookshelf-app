@@ -115,3 +115,22 @@ function deleteItem(idx) {
 
   loadData();
 }
+
+function searchBook() {
+  const keyword = document.getElementById('search-field').value.toLowerCase();
+
+  readingList.innerHTML = '';
+  finishedbooks.innerHTML = '';
+
+  if (keyword === '') return loadData();
+
+  for (let i = 0; i < bookshelf.length; i++) {
+    if (bookshelf[i].title.toLowerCase().includes(keyword)) {
+      const book = bookshelf[i];
+      const card = createCard(book, i);
+
+      if (book.isComplete) finishedbooks.append(card);
+      else readingList.append(card);
+    }
+  }
+}

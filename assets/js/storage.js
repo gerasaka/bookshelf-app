@@ -48,5 +48,6 @@ function saveBook(e) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(bookshelf));
   alert('Book added!');
 
-  updateBookList(newBook);
+  // updateBookList(newBook, bookshelf.length);
+  loadData();
 }

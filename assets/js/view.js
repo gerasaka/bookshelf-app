@@ -1,25 +1,32 @@
-const bookmarkList = document.getElementsByClassName('bookmark-list')[0];
-const readingList = document.getElementsByClassName('reading-list')[0];
-const finishedbooks = document.getElementsByClassName('finished-books')[0];
+const bookmarkList = document.getElementById('bookmark-list');
+const readingList = document.getElementById('reading-list');
+const finishedbooks = document.getElementById('finished-books');
 
 function loadData() {
   getBooks();
 
-  bookshelf.map(book => {
-    renderBookList(book);
+  bookmarkList.innerHTML = '';
+  readingList.innerHTML = '';
+  finishedbooks.innerHTML = '';
+
+  bookshelf.map((book, idx) => {
+    renderBookList(book, idx);
   });
 }
 
-function renderBookList(book) {
-  const card = createCard(book);
+function renderBookList(book, idx) {
+  const card = createCard(book, idx);
 
   if (book.isComplete) finishedbooks.append(card);
   else readingList.append(card);
 
-  if (book.addToBookmark) bookmarkList.append(card.cloneNode(true));
+  if (book.addToBookmark) {
+    const bookmarkCard = createCard(book, idx);
+    bookmarkList.append(bookmarkCard);
+  }
 }
 
-function createCard(book) {
+function createCard(book, idx) {
   const card = document.createElement('div');
   card.classList.add('card');
 
@@ -31,7 +38,7 @@ function createCard(book) {
   bookAuthor.append(book.author);
   bookInfo.append(bookTitle, bookAuthor);
 
-  const { bookmarkBtn, finishBtn, deleteBtn } = createButtons(book);
+  const { bookmarkBtn, finishBtn, deleteBtn } = createButtons(idx);
 
   const btnGroup = document.createElement('div');
   btnGroup.classList.add('btn-group');
@@ -39,33 +46,72 @@ function createCard(book) {
 
   card.append(bookInfo, btnGroup);
 
+  card['itemID'] = book.id;
+  card['itemIndex'] = idx;
+
   return card;
 }
 
-function createButtons(book) {
-  const bookmarkBtn = document.createElement('button');
-  const finishBtn = document.createElement('button');
-  const deleteBtn = document.createElement('button');
-
-  bookmarkBtn.classList.add('btn-icon');
-  finishBtn.classList.add('btn-icon');
-  deleteBtn.classList.add('btn-icon');
-
-  if (book.addToBookmark) bookmarkBtn.classList.add('green');
-  if (book.isComplete) bookmarkBtn.classList.add('green');
-
-  bookmarkBtn.append('B');
-  finishBtn.append('F');
-  deleteBtn.append('D');
+function createButtons(idx) {
+  const bookmarkBtn = createBookmarkBtn(idx);
+  const finishBtn = createFinishBtn(idx);
+  const deleteBtn = createDeleteBtn(idx);
 
   return { bookmarkBtn, finishBtn, deleteBtn };
 }
 
-function updateBookList(book) {
-  const card = createCard(book);
+function createBookmarkBtn(idx) {
+  const button = document.createElement('button');
 
-  if (book.isComplete) finishedbooks.append(card);
-  else readingList.append(card);
+  button.append('B');
+  button.classList.add('btn-icon', 'bookmark-btn');
+  button.addEventListener('click', () => bookmarkItem(idx));
 
-  if (book.addToBookmark) bookmarkList.append(card.cloneNode(true));
+  return button;
+}
+
+function createFinishBtn(idx) {
+  const button = document.createElement('button');
+
+  button.append('F');
+  button.classList.add('btn-icon', 'finish-btn');
+  button.addEventListener('click', () => finishItem(idx));
+
+  return button;
+}
+
+function createDeleteBtn(idx) {
+  const button = document.createElement('button');
+
+  button.append('D');
+  button.classList.add('btn-icon', 'delete-btn');
+  button.addEventListener('click', () => deleteItem(idx));
+
+  return button;
+}
+
+function bookmarkItem(idx) {
+  const prevValue = bookshelf[idx].addToBookmark;
+  bookshelf[idx].addToBookmark = !prevValue;
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(bookshelf));
+
+  loadData();
+}
+
+function finishItem(idx) {
+  const prev = bookshelf[idx].isComplete;
+  bookshelf[idx].isComplete = !prev;
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(bookshelf));
+
+  loadData();
+}
+
+function deleteItem(idx) {
+  bookshelf.splice(idx, 1);
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(bookshelf));
+
+  loadData();
 }

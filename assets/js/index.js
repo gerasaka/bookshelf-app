@@ -16,8 +16,3 @@ closeModal.addEventListener('click', () => {
 const addBookForm = document.getElementById('add-book');
 
 addBookForm.addEventListener('submit', e => saveBook(e));
-
-// TODO: delete book
-// TODO: move book
-
-// TODO: refactor function

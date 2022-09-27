@@ -125,6 +125,10 @@ function finishItem(e, idx) {
 function deleteItem(e, idx) {
   e.stopPropagation();
 
+  const confirmation = confirm('Delete book from bookshelf?');
+
+  if (!confirmation) return;
+
   bookshelf.splice(idx, 1);
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(bookshelf));

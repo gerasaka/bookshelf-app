@@ -49,6 +49,8 @@ function createCard(book, idx) {
   card['itemID'] = book.id;
   card['itemIndex'] = idx;
 
+  card.addEventListener('click', e => showDetails(book));
+
   return card;
 }
 
@@ -65,7 +67,7 @@ function createBookmarkBtn(idx) {
 
   button.append('B');
   button.classList.add('btn-icon', 'bookmark-btn');
-  button.addEventListener('click', () => bookmarkItem(idx));
+  button.addEventListener('click', e => bookmarkItem(e, idx));
 
   return button;
 }
@@ -75,7 +77,7 @@ function createFinishBtn(idx) {
 
   button.append('F');
   button.classList.add('btn-icon', 'finish-btn');
-  button.addEventListener('click', () => finishItem(idx));
+  button.addEventListener('click', e => finishItem(e, idx));
 
   return button;
 }
@@ -85,12 +87,14 @@ function createDeleteBtn(idx) {
 
   button.append('D');
   button.classList.add('btn-icon', 'delete-btn');
-  button.addEventListener('click', () => deleteItem(idx));
+  button.addEventListener('click', e => deleteItem(e, idx));
 
   return button;
 }
 
-function bookmarkItem(idx) {
+function bookmarkItem(e, idx) {
+  e.stopPropagation();
+
   const prevValue = bookshelf[idx].addToBookmark;
   bookshelf[idx].addToBookmark = !prevValue;
 
@@ -99,7 +103,9 @@ function bookmarkItem(idx) {
   loadData();
 }
 
-function finishItem(idx) {
+function finishItem(e, idx) {
+  e.stopPropagation();
+
   const prev = bookshelf[idx].isComplete;
   bookshelf[idx].isComplete = !prev;
 
@@ -108,12 +114,31 @@ function finishItem(idx) {
   loadData();
 }
 
-function deleteItem(idx) {
+function deleteItem(e, idx) {
+  e.stopPropagation();
+
   bookshelf.splice(idx, 1);
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(bookshelf));
 
   loadData();
+}
+
+function showDetails(book) {
+  const container = document.getElementById('details-wrapper');
+
+  const title = container.getElementsByTagName('h2')[0];
+  const author = container.getElementsByTagName('p')[0];
+  const year = container.getElementsByTagName('p')[1];
+  const description = container.getElementsByTagName('p')[3];
+
+  title.innerHTML = book.title;
+  author.innerHTML = 'by: ' + book.author;
+  year.innerHTML = book.year;
+  description.innerHTML = book.description;
+
+  container.style.display = 'block';
+  console.log(container);
 }
 
 function searchBook() {

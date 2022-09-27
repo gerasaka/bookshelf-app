@@ -38,7 +38,7 @@ function createCard(book, idx) {
   bookAuthor.append(book.author);
   bookInfo.append(bookTitle, bookAuthor);
 
-  const { bookmarkBtn, finishBtn, deleteBtn } = createButtons(idx);
+  const { bookmarkBtn, finishBtn, deleteBtn } = createButtons(book, idx);
 
   const btnGroup = document.createElement('div');
   btnGroup.classList.add('btn-group');
@@ -54,29 +54,37 @@ function createCard(book, idx) {
   return card;
 }
 
-function createButtons(idx) {
-  const bookmarkBtn = createBookmarkBtn(idx);
-  const finishBtn = createFinishBtn(idx);
+function createButtons(book, idx) {
+  const bookmarkBtn = createBookmarkBtn(book.addToBookmark, idx);
+  const finishBtn = createFinishBtn(book.isComplete, idx);
   const deleteBtn = createDeleteBtn(idx);
 
   return { bookmarkBtn, finishBtn, deleteBtn };
 }
 
-function createBookmarkBtn(idx) {
+function createBookmarkBtn(isBookmarked, idx) {
   const button = document.createElement('button');
 
-  button.append('B');
-  button.classList.add('btn-icon', 'bookmark-btn');
+  button.classList.add('btn-icon');
+
+  if (isBookmarked)
+    button.innerHTML = '<i class="fa fa-bookmark" aria-hidden="true">';
+  else button.innerHTML = '<i class="fa fa-bookmark-o" aria-hidden="true">';
+
   button.addEventListener('click', e => bookmarkItem(e, idx));
 
   return button;
 }
 
-function createFinishBtn(idx) {
+function createFinishBtn(isFinished, idx) {
   const button = document.createElement('button');
 
-  button.append('F');
-  button.classList.add('btn-icon', 'finish-btn');
+  button.classList.add('btn-icon');
+
+  if (isFinished)
+    button.innerHTML = '<i class="fa fa-repeat" aria-hidden="true">';
+  else button.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>';
+
   button.addEventListener('click', e => finishItem(e, idx));
 
   return button;
@@ -85,8 +93,8 @@ function createFinishBtn(idx) {
 function createDeleteBtn(idx) {
   const button = document.createElement('button');
 
-  button.append('D');
-  button.classList.add('btn-icon', 'delete-btn');
+  button.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+  button.classList.add('btn-icon');
   button.addEventListener('click', e => deleteItem(e, idx));
 
   return button;

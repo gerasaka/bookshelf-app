@@ -87,7 +87,7 @@ textarea {
 }
 
 .checkbox {
-  width: fit-content;
+  width: min-content;
 }
 
 .btn {
@@ -133,8 +133,9 @@ textarea {
 }
 
 .btn-icon {
-  background-color: #623aa2;
-  color: #fcfcfc;
+  border: 2px solid #623aa2;
+  background: none;
+  color: #623aa2;
   height: 2.2em;
   width: 2.2em;
   border-radius: 50%;

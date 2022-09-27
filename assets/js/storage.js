@@ -50,3 +50,34 @@ function saveBook(e) {
 
   loadData();
 }
+
+function updateBookshelf(e, idx) {
+  e.preventDefault();
+
+  const title = document.getElementById('edit-title').value;
+  const author = document.getElementById('edit-author').value;
+  const year = document.getElementById('edit-year').value;
+  const description = document.getElementById('edit-description').value;
+  const isComplete = document.getElementById('edit-finish').checked;
+  const addToBookmark = document.getElementById('edit-bookmark').checked;
+
+  editForm.reset();
+
+  const editedBook = {
+    title,
+    author,
+    year,
+    description,
+    isComplete,
+    addToBookmark,
+  };
+
+  bookshelf[idx] = { ...bookshelf[idx], ...editedBook };
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(bookshelf));
+  alert('Changes saved!');
+
+  editWrapper.style.display = 'none';
+
+  loadData();
+}

@@ -49,7 +49,7 @@ function createCard(book, idx) {
   card['itemID'] = book.id;
   card['itemIndex'] = idx;
 
-  card.addEventListener('click', e => showDetails(book));
+  card.addEventListener('click', () => showDetails(book, idx));
 
   return card;
 }
@@ -136,10 +136,10 @@ function deleteItem(e, idx) {
   loadData();
 }
 
-function showDetails(book) {
+function showDetails(book, idx) {
   const container = document.getElementById('details-wrapper');
 
-  const title = container.getElementsByTagName('h2')[0];
+  const title = container.getElementsByTagName('h3')[0];
   const author = container.getElementsByTagName('p')[0];
   const year = container.getElementsByTagName('p')[1];
   const description = container.getElementsByTagName('p')[3];
@@ -150,7 +150,23 @@ function showDetails(book) {
   description.innerHTML = book.description;
 
   container.style.display = 'block';
-  console.log(container);
+
+  const edit = document.getElementById('edit-btn');
+  edit.addEventListener('click', () => editBook(book, idx));
+}
+
+function editBook(book, idx) {
+  detailsModal.style.display = 'none';
+  editWrapper.style.display = 'block';
+
+  document.getElementById('edit-title').value = book.title;
+  document.getElementById('edit-author').value = book.author;
+  document.getElementById('edit-year').value = book.year;
+  document.getElementById('edit-description').value = book.description;
+  document.getElementById('edit-finish').checked = book.isComplete;
+  document.getElementById('edit-bookmark').checked = book.addToBookmark;
+
+  editForm.addEventListener('submit', e => updateBookshelf(e, idx));
 }
 
 function searchBook() {

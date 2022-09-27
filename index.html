@@ -1,3 +1,6 @@
+<!-- TODO: add icon to button icon -->
+<!-- TODO: create media query -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +16,7 @@
       <!-- top section -->
       <div>
         <!-- modal form button -->
-        <button id="open-modal" class="modal-btn btn">
+        <button id="open-form-modal" class="modal-btn btn">
           Add book to bookshelf
         </button>
         <!-- modal form button -->
@@ -21,7 +24,9 @@
         <section id="form-wrapper">
           <form action="" id="add-book" class="container">
             <h2>Add book to bookshelf</h2>
-            <button id="close-modal" class="btn-icon" type="button">C</button>
+            <button id="close-form-modal" class="btn-icon" type="button">
+              C
+            </button>
 
             <label for="title">Title</label>
             <input type="text" name="title" id="title" />
@@ -89,6 +94,22 @@
         </section>
       </div>
       <!-- bottom section -->
+
+      <!-- details modal -->
+      <div id="details-wrapper">
+        <div id="details-modal" class="container">
+          <button type="button" id="close-details-modal" class="btn-icon">
+            C
+          </button>
+          <h2>Title</h2>
+          <p>Author</p>
+          <p>Year</p>
+          <p>Description</p>
+          <p>description</p>
+          <p>added time</p>
+        </div>
+      </div>
+      <!-- details modal -->
     </main>
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/index.js"></script>

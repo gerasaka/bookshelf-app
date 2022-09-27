@@ -1,3 +1,6 @@
+/* TODO: import font */
+/* TODO: define media query */
+
 * {
   margin: 0;
   padding: 0;
@@ -127,4 +130,19 @@ textarea {
   width: 2.2em;
   border-radius: 50%;
   margin-right: 0.7em;
+}
+
+#details-modal p:nth-child(3),
+#details-modal p:nth-child(4) {
+  color: #464a62;
+}
+
+#details-modal p:nth-child(4) {
+  margin-bottom: 0.7em;
+}
+
+#details-modal p:nth-child(5) {
+}
+
+#details-modal p:nth-child(6) {
 }

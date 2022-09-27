@@ -44,7 +44,8 @@ h2 {
 }
 
 #form-wrapper,
-#details-wrapper {
+#details-wrapper,
+#edit-wrapper {
   display: none;
   position: fixed;
   z-index: 1;
@@ -57,7 +58,8 @@ h2 {
 }
 
 #add-book,
-#details-modal {
+#details-modal,
+#edit-book {
   border-radius: 1em;
   width: calc(400px * 80 / 100);
   margin: auto;
@@ -65,7 +67,8 @@ h2 {
 }
 
 #close-form-modal,
-#close-details-modal {
+#close-details-modal,
+#close-edit-modal {
   position: absolute;
   top: 0.8em;
   right: 1em;
